@@ -13,7 +13,6 @@ Un dernier conteneur s'occupe de capturer le réseau interne a docker (le bridge
 
 - Pour mettre a jour la liste des fichiers (si ajout plus tard) :
 ```
-find ./assets/ -type f > assets.lst
 find ./assets/ -type f | sed 's/\.\/assets\///g' > client/assets.lst
 ```
 
