@@ -1,4 +1,4 @@
-STARTUP_DELAY=10
+STARTUP_DELAY=30
 CMD_DELAY=1
 
 sleep $STARTUP_DELAY
@@ -42,4 +42,3 @@ done
 
 # Iteract with ftp server
 wget --recursive ftp://alpineftp:alpineftp@ftpd
-

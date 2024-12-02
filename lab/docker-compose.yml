@@ -43,8 +43,8 @@ services:
 # ----------------------------------------------
 # CAPTURE PACKETS ON COMPOSE STACK NETWORK
 # ----------------------------------------------
-  capture:
-    image: alpine
-    command: ["/bin/sh", "-c", "apk update && apk add tcpdump && tcpdump -w /capture/$(date +'%Y-%m-%d_%H_%M').pcap"]
-    volumes:
-      - ./samples/:/capture
+  # capture:
+  #   image: alpine
+  #   command: ["/bin/sh", "-c", "apk update && apk add tcpdump && tcpdump -w /capture/$(date +'%Y-%m-%d_%H_%M').pcap"]
+  #   volumes:
+  #     - ./samples/:/capture
