@@ -55,33 +55,32 @@ Enabled sources:
 
 - Je decoupe mon pcap en rondelles :
 ```bash
-❯ python gen_packet_loss.py samples/base_capture.pcap samples/base_capture_packet_loss
-Starting
-Total packets: 19301
-Saved analysis/base_capture_0.5_1.pcap
-Saved analysis/base_capture_0.5_2.pcap
-Saved analysis/base_capture_0.5_3.pcap
-Saved analysis/base_capture_1_1.pcap
-Saved analysis/base_capture_1_2.pcap
-Saved analysis/base_capture_1_3.pcap
-Saved analysis/base_capture_1.5_1.pcap
-Saved analysis/base_capture_1.5_2.pcap
-Saved analysis/base_capture_1.5_3.pcap
-Saved analysis/base_capture_2_1.pcap
-Saved analysis/base_capture_2_2.pcap
-Saved analysis/base_capture_2_3.pcap
-Saved analysis/base_capture_5_1.pcap
-Saved analysis/base_capture_5_2.pcap
-Saved analysis/base_capture_5_3.pcap
-Saved analysis/base_capture_10_1.pcap
-Saved analysis/base_capture_10_2.pcap
-Saved analysis/base_capture_10_3.pcap
-Saved analysis/base_capture_25_1.pcap
-Saved analysis/base_capture_25_2.pcap
-Saved analysis/base_capture_25_3.pcap
-Saved analysis/base_capture_50_1.pcap
-Saved analysis/base_capture_50_2.pcap
-Saved analysis/base_capture_50_3.pcap
+❯ python gen_packet_loss.py samples/base_capture.pcap samples/
+Packet loss generation ...
+Saved 0.5% packet loss iteration 1 in 	samples/base_capture/0.5/1.pcap
+Saved 0.5% packet loss iteration 2 in 	samples/base_capture/0.5/2.pcap
+Saved 0.5% packet loss iteration 3 in 	samples/base_capture/0.5/3.pcap
+Saved 1% packet loss iteration 1 in 	samples/base_capture/1/1.pcap
+Saved 1% packet loss iteration 2 in 	samples/base_capture/1/2.pcap
+Saved 1% packet loss iteration 3 in 	samples/base_capture/1/3.pcap
+Saved 1.5% packet loss iteration 1 in 	samples/base_capture/1.5/1.pcap
+Saved 1.5% packet loss iteration 2 in 	samples/base_capture/1.5/2.pcap
+Saved 1.5% packet loss iteration 3 in 	samples/base_capture/1.5/3.pcap
+Saved 2% packet loss iteration 1 in 	samples/base_capture/2/1.pcap
+Saved 2% packet loss iteration 2 in 	samples/base_capture/2/2.pcap
+Saved 2% packet loss iteration 3 in 	samples/base_capture/2/3.pcap
+Saved 5% packet loss iteration 1 in 	samples/base_capture/5/1.pcap
+Saved 5% packet loss iteration 2 in 	samples/base_capture/5/2.pcap
+Saved 5% packet loss iteration 3 in 	samples/base_capture/5/3.pcap
+Saved 10% packet loss iteration 1 in 	samples/base_capture/10/1.pcap
+Saved 10% packet loss iteration 2 in 	samples/base_capture/10/2.pcap
+Saved 10% packet loss iteration 3 in 	samples/base_capture/10/3.pcap
+Saved 25% packet loss iteration 1 in 	samples/base_capture/25/1.pcap
+Saved 25% packet loss iteration 2 in 	samples/base_capture/25/2.pcap
+Saved 25% packet loss iteration 3 in 	samples/base_capture/25/3.pcap
+Saved 50% packet loss iteration 1 in 	samples/base_capture/50/1.pcap
+Saved 50% packet loss iteration 2 in 	samples/base_capture/50/2.pcap
+Saved 50% packet loss iteration 3 in 	samples/base_capture/50/3.pcap
 Done!
 ```
 

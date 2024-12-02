@@ -3,10 +3,11 @@ import random
 import sys
 from scapy.all import rdpcap, wrpcap
 
+ITERATIONS = 3
+
 def manipulate_pcap(file_path, output_dir, percentages, iterations):
     packets = rdpcap(file_path)
     total_packets = len(packets)
-    print(f"Total packets: {total_packets}")
     base_name = os.path.basename(file_path).split('.')[0]
 
     if not os.path.exists(output_dir):
@@ -17,9 +18,10 @@ def manipulate_pcap(file_path, output_dir, percentages, iterations):
             num_packets_to_remove = int(total_packets * (percent / 100))
             packets_to_remove = random.sample(range(total_packets), num_packets_to_remove)
             new_packets = [pkt for i, pkt in enumerate(packets) if i not in packets_to_remove]
-            output_file = os.path.join(output_dir, f"{base_name}_{percent}_{iteration}.pcap")
+            output_file = os.path.join(output_dir, f"{base_name}/{percent}/{iteration}.pcap")
+            os.makedirs(os.path.dirname(output_file), exist_ok=True)
             wrpcap(output_file, new_packets)
-            print(f"Saved {output_file}")
+            print(f"Saved {percent}% packet loss iteration {iteration} in \t{output_file}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -29,7 +31,6 @@ if __name__ == "__main__":
     input_pcap = sys.argv[1]
     output_directory = sys.argv[2]
     loss_percentages = [0.5, 1, 1.5, 2, 5, 10, 25, 50]
-    num_iterations = 3
-    print("Starting")
-    manipulate_pcap(input_pcap, output_directory, loss_percentages, num_iterations)
+    print("Packet loss generation ...")
+    manipulate_pcap(input_pcap, output_directory, loss_percentages, ITERATIONS)
     print("Done!")
