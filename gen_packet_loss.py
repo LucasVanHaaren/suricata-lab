@@ -5,19 +5,26 @@ from scapy.all import rdpcap, wrpcap
 
 ITERATIONS = 3
 
+"""
+	Takes pcap sample and generate X iterations of packet loss simulation for a certain percentage
+"""
 def packet_loss(file_path, output_dir, percentages, iterations):
+    # first : read the whole source pcap and compute packet number
     packets = rdpcap(file_path)
     total_packets = len(packets)
     base_name = os.path.basename(file_path).split('.')[0]
-
+	
+	# make sure output dir exists 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     for percent in percentages:
         for iteration in range(1, iterations + 1):
+	        # remove random packets in pcap
             num_packets_to_remove = int(total_packets * (percent / 100))
             packets_to_remove = random.sample(range(total_packets), num_packets_to_remove)
             new_packets = [pkt for i, pkt in enumerate(packets) if i not in packets_to_remove]
+            # write new pcap with randomly lost packets
             output_file = os.path.join(output_dir, f"{base_name}/{percent}/{iteration}.pcap")
             os.makedirs(os.path.dirname(output_file), exist_ok=True)
             wrpcap(output_file, new_packets)
@@ -25,7 +32,7 @@ def packet_loss(file_path, output_dir, percentages, iterations):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python packet_lost.py <input_pcap> <output_directory>")
+        print("Usage: python gen_packet_lost.py <input_pcap> <output_directory>")
         sys.exit(1)
 
     input_pcap = sys.argv[1]
