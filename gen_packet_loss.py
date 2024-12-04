@@ -5,7 +5,7 @@ from scapy.all import rdpcap, wrpcap
 
 ITERATIONS = 3
 
-def manipulate_pcap(file_path, output_dir, percentages, iterations):
+def packet_loss(file_path, output_dir, percentages, iterations):
     packets = rdpcap(file_path)
     total_packets = len(packets)
     base_name = os.path.basename(file_path).split('.')[0]
@@ -32,5 +32,5 @@ if __name__ == "__main__":
     output_directory = sys.argv[2]
     loss_percentages = [0.5, 1, 1.5, 2, 5, 10, 25, 50]
     print("Packet loss generation ...")
-    manipulate_pcap(input_pcap, output_directory, loss_percentages, ITERATIONS)
+    packet_loss(input_pcap, output_directory, loss_percentages, ITERATIONS)
     print("Done!")
