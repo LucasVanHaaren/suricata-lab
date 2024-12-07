@@ -11,9 +11,9 @@ temp_file="temp_analysis.csv"
 echo "Subfolder,Alerts,Filestore files,Protocol transactions" > "$output_csv"
 
 # Loop through each subfolder in the analysis folder
-for subfolder in "$analysis_folder"/*/; do
+for subfolder in $(ls -d "$analysis_folder"/*/ | sort -V); do
     # Loop through each pcap analysis folder in the current subfolder
-    for pcap_folder in "$subfolder"/*/; do
+    for pcap_folder in $(ls -d "$subfolder"/*/ | sort -V); do
         # Define the log file path
         log_file="$pcap_folder/suricata.log"
         
@@ -60,7 +60,7 @@ compute_median() {
 }
 
 # Compute the median for each base_capture_X group
-for base in $(awk -F'/' '{print $1}' "$temp_file" | sort | uniq); do
+for base in $(awk -F'/' '{print $1}' "$temp_file" | sort -V | uniq); do
     alerts=($(grep "^$base" "$temp_file" | awk -F',' '{print $2}'))
     files=($(grep "^$base" "$temp_file" | awk -F',' '{print $3}'))
     transactions=($(grep "^$base" "$temp_file" | awk -F',' '{print $4}'))
