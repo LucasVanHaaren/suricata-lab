@@ -1,0 +1,3 @@
+alert http $IP_GW any -> $EXTERNAL_NET any (msg:"MSSIS Nouveau protocole de IP_GW vers EXTERNAL_NET"; \
+  ip. ; dataset:set,proto,type string,state known_proto_set.txt ; \
+  sid:4; rev:1;)

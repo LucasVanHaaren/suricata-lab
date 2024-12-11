@@ -1,4 +1,5 @@
-samples/
-lab/assets/
-lab/client/assets.lst
-analysis/
+*/samples/
+*/lab/assets/
+*/lab/client/assets.lst
+*/analysis/
+*.pcap

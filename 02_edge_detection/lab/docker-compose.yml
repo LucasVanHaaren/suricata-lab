@@ -1,0 +1,41 @@
+services:
+  reverse-proxy:
+    image: nginx
+    volumes:
+      - ./reverse-proxy/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 8080:80
+    depends_on:
+    - web-a
+    - web-b
+    networks:
+      vpcbr:
+        ipv4_address: 192.168.20.10
+      # external:
+        # ipv4_address: 10.0.0.10
+
+  web-a:
+    image: nginx
+    networks:
+      vpcbr:
+        ipv4_address: 192.168.20.20
+
+  web-b:
+    image: nginx
+    networks:
+      vpcbr:
+        ipv4_address: 192.168.20.30
+  
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.20.0/24
+        gateway: 192.168.20.1
+        #  external:
+        #    driver: bridge
+        #    ipam:
+        #      config:
+        #      - subnet: 10.0.0.0/16
+        #        gateway: 10.0.0.1

@@ -1,0 +1,3 @@
+alert ip $IP_GW any -> $EXTERNAL_NET any (msg:"MSSIS Connexion de IP_GW vers une IP inconnue dans EXTERNAL_NET"; \
+  ip.dst; dataset:isnotset,ip,type ipv4,state known_ips_set.txt ; \
+  sid:2; rev:1;)

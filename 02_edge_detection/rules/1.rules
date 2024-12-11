@@ -1,0 +1,1 @@
+alert ip $IP_GW any -> $EXTERNAL_NET any (msg:"MSSIS Connexion de IP_GW vers EXTERNAL_NET"; sid:1; rev:1;)
